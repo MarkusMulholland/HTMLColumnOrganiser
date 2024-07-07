@@ -1,0 +1,785 @@
+// Data
+//title, selected, id, lastEdited, orderInSelectedOptions, tempPlacement, defaultPlacement
+let options = [
+["Christmas",false,40350,false,0,false,0],
+["News & Reading Dept.Sales",false,40457,false,1,false,1],
+["Books",false,40456,false,2,false,2],
+["Partworks",false,40455,false,3,false,3],
+["Newspapers",false,40454,false,4,false,4],
+["Magazines",false,40453,false,5,false,5],
+["Coolers",false,40148,false,6,false,6],
+["Malts",false,40149,false,7,false,7],
+["Spirits",false,40151,false,8,false,8],
+["Wine",false,40152,false,9,false,9],
+["Interactive Dept.Sales",false,40452,false,10,false,10],
+["Wearable Tech",false,40340,false,11,false,11],
+["Gaming",false,40339,false,12,false,12],
+["Music CD's and Movie DVD's",false,40338,false,13,false,13],
+["Pharmacy Dispensary",false,40176,false,14,false,14],
+["Pharmacy Front Shop",false,40798,false,15,false,15],
+["Baby Accessories Dept.Sales",false,40467,false,16,false,16],
+["Baby Softs",false,40466,false,17,false,17],
+["Baby Accessories & Toys",false,40447,false,18,false,18],
+["BABY HARDS",false,40273,false,19,false,19],
+["BABY FEEDING",false,40272,false,20,false,20],
+["Diapers",false,40156,false,21,false,21],
+["Baby Toiletries",false,40155,false,22,false,22],
+["Sterilisers",false,40158,false,23,false,23],
+["Wipes Liners Bpads Nbags",false,40159,false,24,false,24],
+["Infant Foods",false,40157,false,25,false,25],
+["First Aid",false,40170,false,26,false,26],
+["Medicinal",false,40171,false,27,false,27],
+["Nutritional Supplements",false,40074,false,28,false,28],
+["Vitamins & Supplements",false,40175,false,29,false,29],
+["Oral Care",false,40168,false,30,false,30],
+["Bath Accessories",false,40160,false,31,false,31],
+["Bath Additives",false,40161,false,32,false,32],
+["Bath Soaps",false,40163,false,33,false,33],
+["Shaving",false,40174,false,34,false,34],
+["Deodorants",false,40179,false,35,false,35],
+["Sexual Wellness",false,40395,false,36,false,36],
+["Feminine Hygiene",false,40169,false,37,false,37],
+["Personal Other",false,40396,false,38,false,38],
+["Hair Care - Colourants",false,40164,false,39,false,39],
+["Hair Care - Relaxers/Softeners",false,40165,false,40,false,40],
+["Hair Care - Shamp/Cond",false,40166,false,41,false,41],
+["Hair Care - Styling",false,40167,false,42,false,42],
+["Gift Sets",false,40398,false,43,false,43],
+["Skin Care - Face & Neck",false,40181,false,44,false,44],
+["Skincare - Hand & Body",false,40182,false,45,false,45],
+["Skincare - Lip Care",false,40183,false,46,false,46],
+["Skincare - Sun Preps",false,40184,false,47,false,47],
+["Cosmetics",false,40178,false,48,false,48],
+["Fragrance Bar",false,40180,false,49,false,49],
+["Toiletries Department Sales",false,40185,false,50,false,50],
+["Appliances FloorCare",false,40470,false,51,false,51],
+["Appliances Large",false,40469,false,52,false,52],
+["Appliances Small",false,40468,false,53,false,53],
+["Computer Hardware",false,40342,false,54,false,54],
+["Telecommunications",false,40347,false,55,false,55],
+["Computer Memory & Storage",false,40462,false,56,false,56],
+["Multi-Media Dept.Sales",false,40464,false,57,false,57],
+["Printers & Accessories",false,40463,false,58,false,58],
+["Office Automation",false,40348,false,59,false,59],
+["Computer Accessories",false,40344,false,60,false,60],
+["Appliances Personal",false,40473,false,61,false,61],
+["Appliances Water & Ice Makers",false,40472,false,62,false,62],
+["Appliances Seasonal",false,40471,false,63,false,63],
+["Appliances Sewing",false,40474,false,64,false,64],
+["Home Décor Dept.Sales",false,40507,false,65,false,65],
+["Decorative",false,40505,false,66,false,66],
+["Patio",false,40121,false,67,false,67],
+["Dining Glassware",false,40499,false,68,false,68],
+["Dining Crockery",false,40498,false,69,false,69],
+["Dining Serveware",false,40502,false,70,false,70],
+["Dining Picnic & Patio",false,40500,false,71,false,71],
+["Dining Hot Beverage Accessories",false,40503,false,72,false,72],
+["Kitchen Storage",false,40494,false,73,false,73],
+["Dining Cutlery",false,40501,false,74,false,74],
+["Kitchen Accessories",false,40493,false,75,false,75],
+["Laundry",false,40497,false,76,false,76],
+["Cookware",false,40492,false,77,false,77],
+["Ovenware",false,40496,false,78,false,78],
+["Bakeware",false,40495,false,79,false,79],
+["Facial Tissues",false,40211,false,80,false,80],
+["Toilet Paper",false,40217,false,81,false,81],
+["Lighting & Electrical",false,40483,false,82,false,82],
+["Trolleys & Ladders",false,40482,false,83,false,83],
+["Hardware Accessories",false,40481,false,84,false,84],
+["Security",false,40480,false,85,false,85],
+["DIY & Hardware",false,40370,false,86,false,86],
+["Flooring",false,40368,false,87,false,87],
+["Automotive",false,40361,false,88,false,88],
+["Hand Tools",false,40363,false,89,false,89],
+["Power & Machine Tools Accessories",false,40478,false,90,false,90],
+["Power Tools & Machinery",false,40477,false,91,false,91],
+["Paint & Allied",false,40479,false,92,false,92],
+["Home Fittings",false,40367,false,93,false,93],
+["DIY Storage Boxes",false,40484,false,94,false,94],
+["Home Textiles Dept.Sales",false,40513,false,95,false,95],
+["Bedroom Textiles",false,40511,false,96,false,96],
+["Curtains & Cushions",false,40510,false,97,false,97],
+["Bathroom Textiles",false,40509,false,98,false,98],
+["Tableware",false,40508,false,99,false,99],
+["Outdoor Dept.Sales",false,40476,false,100,false,100],
+["Camping",false,40359,false,101,false,101],
+["Braais",false,40358,false,102,false,102],
+["Pool",false,40130,false,103,false,103],
+["Garden",false,40129,false,104,false,104],
+["Detergents",false,40191,false,105,false,105],
+["Bleach",false,40188,false,106,false,106],
+["Prewash & Soakers",false,40197,false,107,false,107],
+["Fabric Softeners",false,40193,false,108,false,108],
+["Brushware",false,40424,false,109,false,109],
+["Cleaning Accessories",false,40190,false,110,false,110],
+["Cleaning",false,40425,false,111,false,111],
+["Candles",false,40189,false,112,false,112],
+["Insecticides",false,40196,false,113,false,113],
+["Furniture Shoe Oven & Metal",false,40441,false,114,false,114],
+["Floor Cleaners & Polishes",false,40194,false,115,false,115],
+["Sanitary Cleaners",false,40198,false,116,false,116],
+["Air Fresheners",false,40186,false,117,false,117],
+["All Purpose Cleaners",false,40187,false,118,false,118],
+["Dishwash",false,40192,false,119,false,119],
+["Hi-Tech Dept.Sales",false,40450,false,120,false,120],
+["Photographic",false,40334,false,121,false,121],
+["Personal Audio",false,40333,false,122,false,122],
+["Home Audio",false,40332,false,123,false,123],
+["Car Audio",false,40097,false,124,false,124],
+["Visual",false,40101,false,125,false,125],
+["Batteries",false,40230,false,126,false,126],
+["Sports Equipment Dept.Sales",false,40515,false,127,false,127],
+["Racquet Sports",false,40514,false,128,false,128],
+["Indoor Games",false,40383,false,129,false,129],
+["Outdoor games",false,40382,false,130,false,130],
+["Cycling",false,40381,false,131,false,131],
+["Health",false,40073,false,132,false,132],
+["Toys Dept.Sales",false,40491,false,133,false,133],
+["Outdoor Toys",false,40490,false,134,false,134],
+["Pre School > 36 Months",false,40489,false,135,false,135],
+["Boys Toys",false,40488,false,136,false,136],
+["Indoor Toys",false,40374,false,137,false,137],
+["Girls Toys",false,40373,false,138,false,138],
+["Party",false,40139,false,139,false,139],
+["Luggage Dept.Sales",false,40461,false,140,false,140],
+["School Luggage",false,40460,false,141,false,141],
+["Travel Luggage",false,40458,false,142,false,142],
+["Stationery & Office Dept.Sales",false,40487,false,143,false,143],
+["Arts & Crafts",false,40485,false,144,false,144],
+["Office Furniture",false,40371,false,145,false,145],
+["Stationery",false,40116,false,146,false,146],
+["Cards & Gift Wraps",false,40486,false,147,false,147],
+["Garbage",false,40213,false,148,false,148],
+["Foils Wraps Bags",false,40443,false,149,false,149],
+["Roller Towel",false,40215,false,150,false,150],
+["Serviettes",false,40216,false,151,false,151],
+["Disposable Plates Cups",false,40442,false,152,false,152],
+["Pet Accessories",false,40207,false,153,false,153],
+["Pet Health",false,40208,false,154,false,154],
+["Snacks & Treats",false,40444,false,155,false,155],
+["Dry Dog",false,40204,false,156,false,156],
+["Dry Cat",false,40203,false,157,false,157],
+["Canned Dog",false,40202,false,158,false,158],
+["Canned Cat",false,40201,false,159,false,159],
+["Fish & Rodents",false,40445,false,160,false,160],
+["Bird & Fowl",false,40200,false,161,false,161],
+["Edible Groceries Department Sales",false,40079,false,162,false,162],
+["Passover",false,40249,false,163,false,163],
+["Occasions",false,40076,false,164,false,164],
+["Cooking Oils",false,40051,false,165,false,165],
+["Dried Vegetables",false,40052,false,166,false,166],
+["Maize",false,40047,false,167,false,167],
+["Rice",false,40049,false,168,false,168],
+["Canned Meat",false,40057,false,169,false,169],
+["Canned Fish",false,40063,false,170,false,170],
+["Canned Vegetables",false,40058,false,171,false,171],
+["Main Meals Soups",false,40065,false,172,false,172],
+["Dinners ( Dry ingiedents)",false,40438,false,173,false,173],
+["Pasta",false,40048,false,174,false,174],
+["Spices & Seasonings",false,40435,false,175,false,175],
+["Salt",false,40054,false,176,false,176],
+["Vinegar",false,40056,false,177,false,177],
+["Pickles & Olives",false,40434,false,178,false,178],
+["Salad Dressings And Mayonnaise",false,40053,false,179,false,179],
+["Meal Solution",false,40428,false,180,false,180],
+["Condiments Sauces",false,40050,false,181,false,181],
+["Condiments",false,40310,false,182,false,182],
+["Sugar",false,40045,false,183,false,183],
+["Flour",false,40044,false,184,false,184],
+["Baking Aids",false,40043,false,185,false,185],
+["Jellies Pudding & Custard",false,40436,false,186,false,186],
+["Canned Milk",false,40033,false,187,false,187],
+["Canned Fruit",false,40059,false,188,false,188],
+["Jams & Spreads",false,40432,false,189,false,189],
+["Uht Milk",false,40037,false,190,false,190],
+["Cereals",false,40060,false,191,false,191],
+["Biscuits & Rusks",false,40440,false,192,false,192],
+["Tea",false,40016,false,193,false,193],
+["Milk Modifiers",false,40015,false,194,false,194],
+["Milk Powders & Blends",false,40437,false,195,false,195],
+["Coffee & Tea Mixers",false,40429,false,196,false,196],
+["Creamers",false,40014,false,197,false,197],
+["Coffee",false,40013,false,198,false,198],
+["Snacks",false,40070,false,199,false,199],
+["Chips",false,40071,false,200,false,200],
+["Bulk Edible Groceries",false,40761,false,201,false,201],
+["Dried Fruit",false,40072,false,202,false,202],
+["Nuts",false,40250,false,203,false,203],
+["Sweets",false,40077,false,204,false,204],
+["Chocolates",false,40075,false,205,false,205],
+["Mineral Water",false,40012,false,206,false,206],
+["Carbonated Soft Drinks",false,40011,false,207,false,207],
+["Energy Drinks",false,40248,false,208,false,208],
+["Sports Drinks",false,40247,false,209,false,209],
+["Other Rtd Drinks",false,40022,false,210,false,210],
+["Iced Tea",false,40221,false,211,false,211],
+["Concentrated Nectars",false,40018,false,212,false,212],
+["Cordials & Squashes",false,40433,false,213,false,213],
+["Carbonated Fruit Juices",false,40017,false,214,false,214],
+["Long Life Fruit Juices",false,40021,false,215,false,215],
+["Perishable Groceries Department Sales",false,40038,false,216,false,216],
+["Frozen Processed Meats",false,40088,false,217,false,217],
+["Frozen Pet Food",false,40206,false,218,false,218],
+["Ice Cubes",false,40032,false,219,false,219],
+["Frozen Confectionery",false,40026,false,220,false,220],
+["Frozen Fruit",false,40029,false,221,false,221],
+["Ice Cream & Desserts",false,40431,false,222,false,222],
+["Frozen Vegetables",false,40028,false,223,false,223],
+["Frozen Meals",false,40030,false,224,false,224],
+["Frozen Poultry",false,40308,false,225,false,225],
+["Frozen Fish",false,40027,false,226,false,226],
+["Fish",false,40096,false,227,false,227],
+["Beef/Veal  Lamb  Pork And Other Meat",false,40301,false,228,false,228],
+["Fresh Poultry",false,40307,false,229,false,229],
+["Chilled Processed Meats",false,40086,false,230,false,230],
+["Department Cheese",false,40845,false,231,false,231],
+["Pre Pack Cheese",false,40797,false,232,false,232],
+["Bulk Cheese",false,40796,false,233,false,233],
+["Yoghurt",false,40042,false,234,false,234],
+["Dairy By Products",false,40040,false,235,false,235],
+["Fresh Milk",false,40034,false,236,false,236],
+["Fresh Fruit Juices",false,40020,false,237,false,237],
+["Butter Margarine",false,40430,false,238,false,238],
+["Eggs",false,40025,false,239,false,239],
+["Support Bakery",false,40252,false,240,false,240],
+["Outsourced And Instore Bakery",false,40251,false,241,false,241],
+["Deli Meals",false,40082,false,242,false,242],
+["Deli Processed Meats",false,40421,false,243,false,243],
+["Sushi",false,40223,false,244,false,244],
+["Food for Now",false,40313,false,245,false,245],
+["Prepacked Meals",false,40084,false,246,false,246],
+["Vegetables",false,40324,false,247,false,247],
+["Fruit",false,40092,false,248,false,248],
+["Department Sales",false,40090,false,249,false,249],
+["Flowers",false,40091,false,250,false,250]
+];
+
+// Trail of all amendments. Emptied on reset.
+let reorderTrail = [
+  // optionIndex, previousLoc, currentLoc
+];
+
+let pwsInputs = [];
+
+// Used to store the current position in the reorder trail.
+let reorderTrailPos = 0;
+
+// Flags which indicate whether an option is selected and which option is selected.
+let optionSelected = false;
+let selectedOption = false;
+let lastEditedOption = false;
+
+// This flag will be set if the a mouse click is released.
+let selectedReleased = false;
+
+// Sets the bounding box for each option.
+const optionWidth = 80;
+const optionHeight = 25;
+
+// Sets the dimensions for each option.
+const optionDisplayHeight = 20;
+const optionDisplayWidth = optionWidth;
+const textXOffset = 3;
+const textYOffset = 14;
+const txtSize = 9;
+const maxTextLength = 10;
+
+// Sets dimensions of each column
+const rowCount = 23;
+const colXOffset = 155;
+const colStartXOffset = 25;
+
+// Sets dimensions and positioning of Reset button;
+const rButtonWidth = 100;
+const rButtonHeight = 32;
+const rButtonX = colStartXOffset;
+const rButtonY = 590;
+const rButtonTextXOffset = 5;
+const rButtonTextYOffset = 20;
+
+function setup(){
+  textStyle(BOLD);
+  cnv = createCanvas(1590, 900);
+  frameRate(60);
+  drawInputs();
+}
+
+function draw() {
+  background(255);
+  
+  // Set the cursor.
+  setCursor();
+  
+  // Draw numeric indicators.
+  drawSupportingElements();
+  
+  // If the mouse is released after a click.
+  if(selectedReleased){
+    mouseUp();
+  }
+  
+  // Display options and selected option.
+  generateLists();
+  
+  // Handle mouse click.
+  if (mouseIsPressed) {
+    mouseDown();
+  }
+}
+
+function generateLists(){
+  // Draws all of the options.
+  drawSelectedOptions();
+  
+  // Draw the option which is selected on mouse location.
+  drawSelectedOption();
+  
+  // Draw text which is too long for the option's rect upon hover.
+  drawHoverText();
+}
+
+// Draw extended text for longer option text.
+function drawHoverText(){
+  
+  // Sort options to ensure 
+  let selectedOptions = [];
+    
+  for(let i=0; i < options.length; i++){
+    if(options[i][4] !== false){
+      selectedOptions.push(options[i]);
+    }
+  }
+  
+  selectedOptions.sort(function(a, b){return a[4] - b[4]});
+  
+  let col = 0;
+  let row = 0;
+  let colOffset = 0;
+  
+  if(!optionSelected){
+    for(let i=0; i < selectedOptions.length; i++){
+      if(i%rowCount === 0 && i !== 0){
+        col++;
+        colOffset+=colXOffset;
+        row = 0;
+      }
+      
+      if(selectedOptions[i][0].length > 10){
+        // Determines the option column and resets the row upon column increment.
+        
+        
+        if(mouseX>colOffset && mouseX<colOffset+optionWidth && mouseY>row*optionHeight && mouseY<(row*optionHeight)+optionHeight){
+          fill(255);
+          rect(mouseX, mouseY, selectedOptions[i][0].length * 7, optionDisplayHeight);
+          fill(0);
+          text(selectedOptions[i][0], mouseX+10, mouseY+13);
+        }
+      }
+      
+      row++;
+    }
+  }
+}
+
+// Draw currently selected option at mouse loc.
+function drawSelectedOption(){
+  
+  // If this option is selected, draw a copy of the option at the mouse's location.
+  if(selectedOption !== false){
+    
+    let selectedStroke = color(173, 59, 59);
+    
+    let col = 0;
+    let row = 0;
+    let colOffset = 0;
+    
+    // Ensure the selected option is hovering over a valid option position.
+    for(let i=0; i < options.length; i++){
+      if(i%rowCount === 0 && i !== 0){
+          col++;
+          colOffset+=colXOffset;
+          row = 0;
+      }
+      
+      if(mouseX>colOffset && mouseX<colOffset+optionWidth && mouseY>row*optionHeight && mouseY<(row*optionHeight)+optionHeight){
+        selectedStroke = color(131, 173, 59);
+      }
+      
+      row++;
+    }
+    
+    pos = createVector(mouseX-50, mouseY-10);
+    
+    // Shorten text if necessary.
+    let displayText = shortenDisplayText(options[selectedOption][0]);
+    
+    // Draw the selected option.
+    stroke(selectedStroke);
+    fill(255);
+    rect(pos.x, pos.y, optionWidth, optionDisplayHeight);
+    noStroke();
+    fill(0);
+    textSize(txtSize);
+    text(displayText, pos.x + textXOffset, pos.y + textYOffset);
+  }
+}
+
+// Draw all options.
+function drawSelectedOptions(){
+  
+  // Get all elements with an order element.
+  let selectedOptions = [];
+  
+  //Loop over each option and push to selected options.
+  for(var i=0; i < options.length; i++){
+    if(options[i][4] !== false){
+      selectedOptions.push(options[i]);
+    }
+  }
+  
+  // Sort the selected options.
+  selectedOptions.sort(function(a, b){return a[4] - b[4]});
+  
+  let col = 0;
+  let row = 0;
+  let colOffset = 0;
+  
+  // Set the position of the selected option to the position it is hovering over and increment all options there after
+  for(let i = 0; i < selectedOptions.length; i++){
+    
+    // Determines the option column and resets the row upon column increment.
+    if(i%rowCount === 0 && i !== 0){
+      col++;
+      colOffset+=colXOffset;
+      row = 0;
+    }
+    
+    if(mouseX>colOffset && mouseX<colOffset+optionWidth && mouseY>row*optionHeight && mouseY<(row*optionHeight)+optionHeight){
+      if(optionSelected){
+        // Set the element to this position and increment all elements after this point
+        options[selectedOption][4] = i;
+        options[selectedOption][5] = true;
+        
+        selectedOptions.splice(i, 0, options[selectedOption]);
+        
+        for(let j = i+1; j < selectedOptions.length; j++){
+          selectedOptions[j][4]++;
+        }
+        
+        break;
+      }
+    }
+    
+    row++;
+  }
+  
+  let xOffset = 0;
+  let columnYReset = 0;
+  
+  // Draw the text and border of the element.
+  for(let i = 0; i < selectedOptions.length; i++){
+    if(i%rowCount === 0 && i !== 0){
+      xOffset += colXOffset;
+      columnYReset = i*optionHeight;
+    }
+    
+    // Shorten text if necessary.
+    let displayText = shortenDisplayText(selectedOptions[i][0]);
+    
+    let pos = createVector(colStartXOffset+xOffset, (i*optionHeight)-columnYReset);
+    
+    if(selectedOptions[i][5]){
+      noFill();
+      noStroke();
+      rect(pos.x, pos.y, optionWidth, optionDisplayHeight);
+      fill(0);
+      noStroke();
+    }else{
+      if(selectedOptions[i][3] !== false ){
+        fill(255);
+        stroke(173, 173, 59);
+        rect(pos.x, pos.y, optionWidth, optionDisplayHeight);
+        fill(0);
+        noStroke();
+        textSize(txtSize);
+        text(displayText, pos.x + textXOffset, pos.y + textYOffset);
+      }
+      else{
+        fill(255);
+        stroke(59, 131, 173);
+        rect(pos.x, pos.y, optionWidth, optionDisplayHeight);
+        fill(0);
+        noStroke();
+        textSize(txtSize);
+        text(displayText, pos.x + textXOffset, pos.y + textYOffset);
+      }
+    }
+  }
+  
+  // Reset the temporarily placed option.
+  for(let i = 0; i < selectedOptions.length; i++){
+    if(selectedOptions[i][5]){
+      selectedOptions[i][4] = false;
+      selectedOptions[i][5] = false;
+      
+      selectedOptions.splice(i, 1);
+      break;
+    }
+  }
+  
+  // Reset the options position.
+  for(let i = 0; i < selectedOptions.length; i++){
+    
+    selectedOptions[i][4] = i;
+  }
+}
+
+// Detects whether a mouse down has occured over an option and marks that option as selected if so.
+function mouseDown(){
+  if(mouseX > rButtonX && mouseX < rButtonX+rButtonWidth && mouseY > rButtonY && mouseY < rButtonY+rButtonHeight){
+    if(lastEditedOption !== false){
+      options[lastEditedOption][3] = false;
+      lastEditedOption = false;
+    }
+    
+    for(let i = 0; i < options.length; i++){
+      options[i][4] = options[i][6];
+    }
+    
+    for(let i=0; i<pwsInputs.length; i++){
+      pwsInputs[i].value(i+1);
+    }
+  }
+  // Only run if there is not an option selected already.
+  else if(!optionSelected){
+    let selectedOptions = [];
+
+    // Loop over each selected option.
+    for(let i = 0; i < options.length; i++){
+      if(options[i][4] !== false){
+        selectedOptions.push(options[i]);
+      }
+    }
+
+    selectedOptions.sort(function(a, b){return a[4] - b[4]});
+    
+    let col = 0;
+    let row = 0;
+    let colOffset = 0;
+
+    for(let i = 0; i < selectedOptions.length; i++){
+      // Determines the option column and resets the row upon column increment.
+      if(i%rowCount === 0 && i !== 0){
+        col++;
+        colOffset+=colXOffset;
+        row = 0;
+      }
+      
+      if(mouseX>colOffset && mouseX<colOffset+optionWidth && mouseY>row*optionHeight && mouseY<(row*optionHeight)+optionHeight){
+
+        // An option has been selected.
+        optionSelected = true;
+
+        selectedOptions[i][1] = true;
+        selectedOptions[i][4] = false;
+
+        
+        // Get the index of the selected option.
+        for(let j = 0; j < options.length; j++){
+          if(options[j][1] !== false){
+            selectedOption = j;
+            break;
+          }
+        }
+      }
+      
+      row++;
+    }
+  }
+}
+
+// Draw supporting UI elements.
+function drawSupportingElements(){
+  
+  // Draw line numbers.
+  xOffset = 0;
+  let columnYReset = 0;
+  for(let i = 0; i < options.length; i++){
+    
+    if(i%rowCount === 0 && i !== 0){
+      xOffset += colXOffset;
+      columnYReset = i*optionHeight;
+    }
+    
+    let pos = createVector(0, (i*optionHeight));
+    fill(0);
+    textSize(txtSize);
+    text(i+1, pos.x + xOffset, pos.y + textYOffset - columnYReset);
+  }
+  
+  strokeWeight(2);
+  // Draw Reset Button
+  fill(255);
+  stroke(100);
+  rect(rButtonX, rButtonY, rButtonWidth, rButtonHeight);
+  fill(0);
+  noStroke();
+  textSize(txtSize);
+  text("RESET TO DEFAULT", rButtonX+rButtonTextXOffset, rButtonY+rButtonTextYOffset);
+  
+  // Draw Undo and Redo button.
+  fill(255);
+  stroke(100);
+  
+  triangle(145, 606, 160, 596, 160, 616);
+  
+  triangle(205, 606, 190, 596, 190, 616);
+  strokeWeight(1);
+}
+
+// Set flag to indicate mouse click released.
+function mouseReleased(){
+  if(optionSelected){
+    selectedReleased = true;
+  }
+}
+
+// Handle the mouse up event.
+function mouseUp(){
+  let selectedOptions = [];
+  
+  // Loop over each selected option.
+  for(var i=0; i < options.length; i++){
+    if(options[i][4] !== false){
+      selectedOptions.push(options[i]);
+    }
+  }
+  
+  selectedOptions.sort(function(a, b){return a[4] - b[4]});
+  
+  let col = 0;
+  let row = 0;
+  let colOffset = 0;
+  
+  let selectionMovedToValidPosition = false;
+  
+  for(let i = 0; i < selectedOptions.length + 1; i++){
+    
+    // Determines the option column and resets the row upon column increment.
+    if(i%rowCount === 0 && i !== 0){
+      col++;
+      colOffset+=colXOffset;
+      row = 0;      
+    }
+    
+    if(mouseX>colOffset && mouseX<colOffset+optionWidth && mouseY>row*optionHeight && mouseY<(row*optionHeight)+optionHeight){
+      if(optionSelected && i > selectedOptions.length){
+        
+        reorderTrail.push([selectedOption, options[selectedOption][4], i]);
+        console.log(selectedOption);
+        
+        selectionMovedToValidPosition = true;
+        // Set the element to this position
+        if(lastEditedOption !== false ){
+          options[lastEditedOption][3] = false;
+        }
+        
+        lastEditedOption = selectedOption;
+        
+        options[selectedOption][1] = false;
+        options[selectedOption][3] = true;
+        options[selectedOption][4] = i;
+        options[selectedOption][5] = false;
+        optionSelected = false;
+        selectedOption = false;
+      } else if(optionSelected){
+        
+        reorderTrail.push([selectedOption, options[selectedOption][4], i]);
+        console.log(selectedOption, options[selectedOption]);
+        
+        if(lastEditedOption !== false ){
+          options[lastEditedOption][3] = false;
+        }
+        
+        lastEditedOption = selectedOption;
+        
+        selectionMovedToValidPosition = true;
+        // Set the element to this position
+        options[selectedOption][1] = false;
+        options[selectedOption][3] = true;
+        options[selectedOption][4] = i;
+        options[selectedOption][5] = false;
+
+        selectedOptions.splice(i, 0, options[selectedOption]);
+
+        for(let j = i+1; j < selectedOptions.length; j++){
+          selectedOptions[j][4]++;
+        }
+
+        optionSelected = false;
+        selectedOption = false;
+      }
+    }
+    
+    row++;
+  }
+  
+  if(!selectionMovedToValidPosition){
+    
+    reorderTrail.push([selectedOption, options[selectedOption][4], options[selectedOption][6]]);
+    console.log(reorderTrail);
+    
+    options[selectedOption][4] = options[selectedOption][6];
+    for(let i = selectedOption+1; i < options.length; i++){
+      options[i][4]++;
+    }
+
+    options[selectedOption][5] = false;
+    options[selectedOption][1] = false;
+
+    optionSelected = false;
+    selectedOption = false;
+  }
+  
+  //reset
+  selectedReleased = false;
+}
+
+// Shorten the text displayed in each option if necessary.
+function shortenDisplayText(_optionText){
+  if(_optionText.length > maxTextLength){
+      return _optionText.slice(0, maxTextLength).toUpperCase() + "...";
+    }else{
+      return _optionText.toUpperCase();
+    }
+}
+
+// Set the cursor.
+function setCursor(){
+  if(optionSelected){
+    cursor('grab');
+  } else if(mouseX > rButtonX && mouseX < rButtonX+rButtonWidth && mouseY > rButtonY && mouseY < rButtonY+rButtonHeight){
+    cursor(HAND);
+  }else{
+    cursor(ARROW);
+  }
+}
+
+function drawInputs(){
+  xOffset = 0;
+  let columnYReset = 0;
+  for(let i = 0; i < options.length; i++){
+    
+    if(i%rowCount === 0 && i !== 0){
+      xOffset += colXOffset;
+      columnYReset = i*optionHeight;
+    }
+    
+    let pos = createVector(0, (i*optionHeight));
+    let input = createInput();
+    input.addClass("input");
+    input.style('width: 20px; font-size: 11px;');
+    input.position(pos.x + xOffset + 110, pos.y + textYOffset - columnYReset-14);
+    append(pwsInputs, input);
+  }
+}
